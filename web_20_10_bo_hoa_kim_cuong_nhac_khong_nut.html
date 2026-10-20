@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10 💐</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #ff758c;
+            --secondary-color: #ff7eb3;
+            --bg-gradient: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --text-color: #5a3d48;
+            --accent-color: #d81b60;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: var(--text-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Canvas hiệu ứng hoa/tim bay */
+        #particleCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Container chính */
+        .app-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        /* === 1. LANDING PAGE === */
+        #landing-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            cursor: pointer;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .landing-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8rem;
+            color: #b71c1c;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.8);
+            margin-bottom: 25px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.3;
+        }
+
+        /* KHUNG CHỨA BÓ HOA (GIỮ NGUYÊN KHUNG CHÍNH GIỮA MÀN HÌNH MỞ ĐẦU) */
+        .bouquet-container {
+            position: relative;
+            width: 320px;
+            height: 280px;
+            margin: 10px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulseBouquet 2s infinite alternate ease-in-out;
+            filter: drop-shadow(0 15px 25px rgba(216, 27, 96, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .bouquet-container:hover {
+            transform: scale(1.08) rotate(3deg);
+        }
+
+        @keyframes pulseBouquet {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+
+        /* CSS CỦA CỤM 8 BÔNG HOA NGHỆ THUẬT TỪ MẪU SINH NHẬT CỦA BẠN */
+        .bouquet-glow {
+            position: absolute;
+            width: 260px;
+            height: 260px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,211,220,.85), rgba(255,255,255,0) 70%);
+            filter: blur(10px);
+        }
+
+        .flower {
+            position: absolute;
+            width: 78px;
+            height: 78px;
+            animation: flowerFloat 5s ease-in-out infinite;
+        }
+
+        /* Tọa độ chuẩn của 8 bông hoa trong mẫu của bạn */
+        .flower.f1 { top: 15px;  left: calc(50% - 39px); animation-delay: 2.4s; }
+        .flower.f2 { top: 48px;  left: calc(50% - 100px); animation-delay: 2.5s; }
+        .flower.f3 { top: 48px;  left: calc(50% + 22px);  animation-delay: 2.6s; }
+        .flower.f4 { top: 110px; left: calc(50% - 125px); animation-delay: 2.7s; }
+        .flower.f5 { top: 110px; left: calc(50% + 48px);  animation-delay: 2.8s; }
+        .flower.f6 { top: 120px; left: calc(50% - 39px);  animation-delay: 2.9s; }
+        .flower.f7 { top: 175px; left: calc(50% - 85px);  animation-delay: 3.0s; }
+        .flower.f8 { top: 175px; left: calc(50% + 8px);   animation-delay: 3.1s; }
+
+        @keyframes flowerFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .petals {
+            position: absolute;
+            inset: 0;
+            animation: rotateSlow 20s linear infinite;
+        }
+
+        .petal {
+            position: absolute;
+            width: 29px;
+            height: 41px;
+            left: 24px;
+            top: 7px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            background: linear-gradient(135deg, #ffb5c5, #e07a94);
+            box-shadow: 0 4px 12px rgba(191,98,122,0.18);
+            transform-origin: center 32px;
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg); }
+        .petal:nth-child(2) { transform: rotate(72deg); }
+        .petal:nth-child(3) { transform: rotate(144deg); }
+        .petal:nth-child(4) { transform: rotate(216deg); }
+        .petal:nth-child(5) { transform: rotate(288deg); }
+
+        @keyframes rotateSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .flower-center {
+            position: absolute;
+            z-index: 5;
+            left: 31px;
+            top: 31px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 30%, #fff4bf, #dfad5d);
+            box-shadow: 0 0 10px rgba(224,173,93,0.8);
+        }
+
+        .instruction-text {
+            margin-top: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #8e24aa;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 12px 24px;
+            border-radius: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            animation: blink 1.8s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; transform: translateY(0); }
+            50% { opacity: 0.6; transform: translateY(-5px); }
+        }
+
+        /* === 2. MAIN PAGE (LIST OF 18) === */
+        #main-page {
+            display: none;
+            width: 100%;
+            max-width: 1100px;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            padding-bottom: 80px;
+        }
+
+        .main-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .main-header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #880e4f;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        .main-header p {
+            font-size: 1.1rem;
+            color: #4a148c;
+            font-weight: 500;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .grid-container {
+                grid-template-columns: repeat(6, 1fr);
+            }
+        }
+
+        .gift-card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gift-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: linear-gradient(90deg, #ff758c, #ff7eb3);
+        }
+
+        .gift-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(216, 27, 96, 0.2);
+            border-color: #ff7eb3;
+        }
+
+        .card-number {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(255, 117, 140, 0.4);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .card-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #521822;
+        }
+
+        /* Nút xem thư chung */
+        .common-letter-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #d81b60, #ff4081);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            box-shadow: 0 8px 25px rgba(216, 27, 96, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .common-letter-btn:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 12px 30px rgba(216, 27, 96, 0.6);
+        }
+
+        /* === 3. MODAL POPUP === */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-card {
+            background: #fff;
+            background-image: radial-gradient(#ffebee 1px, transparent 0);
+            background-size: 16px 16px;
+            width: 100%;
+            max-width: 500px;
+            border-radius: 24px;
+            padding: 35px 25px 25px 25px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+            transform: scale(0.8) translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            border: 3px solid #ffccd5;
+        }
+
+        .modal-overlay.active .modal-card {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-avatar {
+            width: 80px;
+            height: 80px;
+            background: #ffe0e9;
+            border-radius: 50%;
+            margin: -75px auto 15px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .modal-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #c2185b;
+            margin-bottom: 15px;
+        }
+
+        .modal-body {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a4a4a;
+            margin-bottom: 25px;
+            text-align: justify;
+            text-justify: inter-word;
+            padding: 0 10px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+
+        .modal-close-btn {
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 5px 15px rgba(255, 117, 140, 0.4);
+        }
+
+        .modal-close-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #ffccd5;
+            border-radius: 10px;
+        }
+
+        /* Nút âm thanh toggle */
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+
+        /* Giấy gói xòe rộng bên ngoài, cụm hoa nằm gọn bên trong */
+        .bouquet-container {
+            isolation: isolate;
+            width: 350px;
+            height: 325px;
+            filter: drop-shadow(0 16px 20px rgba(145, 54, 84, .22));
+        }
+
+        .bouquet-glow {
+            width: 300px;
+            height: 285px;
+            z-index: -4;
+            background: radial-gradient(ellipse, rgba(255, 224, 232, .9), rgba(255,255,255,0) 72%);
+        }
+
+        /* Các lớp giấy nhô cao hai bên và phía sau cụm hoa */
+        .bouquet-paper-back {
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            top: 65px;
+            width: 292px;
+            height: 218px;
+            transform: translateX(-50%) rotate(-3deg);
+            clip-path: polygon(3% 0, 35% 15%, 50% 31%, 67% 13%, 98% 0, 84% 78%, 58% 100%, 50% 91%, 25% 100%, 12% 75%);
+            background: linear-gradient(110deg, #dca9bc 0%, #f8dfe4 20%, #fff3ec 43%, #edc6d1 68%, #d9a1b6 100%);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.6);
+            pointer-events: none;
+        }
+
+        .bouquet-paper-back::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            clip-path: polygon(3% 0, 35% 15%, 50% 31%, 26% 100%, 12% 75%);
+            background: linear-gradient(120deg, rgba(255,255,255,.72), rgba(255,255,255,0) 75%);
+        }
+
+        .bouquet-paper {
+            position: absolute;
+            z-index: 4;
+            left: 50%;
+            top: 139px;
+            width: 250px;
+            height: 160px;
+            transform: translateX(-50%);
+            clip-path: polygon(0 0, 100% 0, 78% 100%, 51% 83%, 22% 100%);
+            background: linear-gradient(105deg, #f1c9c5 0%, #fff3e8 24%, #f8dfd4 48%, #fff5eb 70%, #e9bac7 100%);
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.75);
+            pointer-events: none;
+        }
+
+        .bouquet-paper::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            clip-path: polygon(0 0, 46% 0, 22% 100%, 0 0);
+            background: linear-gradient(120deg, rgba(255,255,255,.85), rgba(255,255,255,0));
+        }
+
+        .bouquet-paper::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            clip-path: polygon(100% 0, 74% 100%, 51% 83%, 67% 0);
+            background: linear-gradient(100deg, rgba(210,139,163,.06), rgba(191,111,143,.28));
+        }
+
+        .bouquet-stems {
+            position: absolute;
+            z-index: 2;
+            left: 50%;
+            top: 125px;
+            width: 3px;
+            height: 112px;
+            background: #527b55;
+            transform: translateX(-50%) rotate(2deg);
+            border-radius: 10px;
+            box-shadow: -17px 13px 0 -0.5px #66895e, 17px 12px 0 -0.5px #739765,
+                        -31px 27px 0 -0.7px #557b50, 31px 27px 0 -0.7px #648c59;
+            pointer-events: none;
+        }
+
+        .bouquet-leaf {
+            position: absolute;
+            z-index: 3;
+            width: 35px;
+            height: 15px;
+            background: linear-gradient(135deg, #9bc786, #3f754b);
+            border-radius: 100% 0 100% 0;
+            pointer-events: none;
+        }
+        .bouquet-leaf.l1 { left: 91px; top: 172px; transform: rotate(18deg); }
+        .bouquet-leaf.l2 { right: 88px; top: 181px; transform: scaleX(-1) rotate(20deg); }
+        .bouquet-leaf.l3 { left: 112px; top: 199px; transform: rotate(-12deg) scale(.85); }
+        .bouquet-leaf.l4 { right: 109px; top: 202px; transform: scaleX(-1) rotate(-12deg) scale(.85); }
+
+        .bouquet-ribbon {
+            position: absolute;
+            z-index: 6;
+            left: 50%;
+            top: 218px;
+            width: 58px;
+            height: 24px;
+            transform: translateX(-50%) rotate(-3deg);
+            border-radius: 7px;
+            background: linear-gradient(135deg, #d95e83, #f59bb4 48%, #c74770);
+            box-shadow: 0 4px 8px rgba(145, 45, 78, .22);
+            pointer-events: none;
+        }
+        .bouquet-ribbon::before,
+        .bouquet-ribbon::after {
+            content: "";
+            position: absolute;
+            top: 9px;
+            width: 28px;
+            height: 25px;
+            background: linear-gradient(135deg, #ee8ca8, #c94b76);
+            z-index: -1;
+        }
+        .bouquet-ribbon::before {
+            right: 35px;
+            clip-path: polygon(100% 0, 0 0, 12% 100%, 68% 70%);
+            transform: rotate(12deg);
+        }
+        .bouquet-ribbon::after {
+            left: 35px;
+            clip-path: polygon(0 0, 100% 0, 82% 100%, 30% 70%);
+            transform: rotate(-12deg);
+        }
+
+        /* Bông hoa xếp sát nhau thành vòm, phần đáy khuất nhẹ sau miệng giấy */
+        .flower {
+            z-index: 3;
+            width: 78px;
+            height: 78px;
+        }
+        .flower.f1 { top: 13px; left: calc(50% - 39px); }
+        .flower.f2 { top: 43px; left: calc(50% - 100px); }
+        .flower.f3 { top: 43px; left: calc(50% + 22px); }
+        .flower.f4 { top: 83px; left: calc(50% - 123px); }
+        .flower.f5 { top: 83px; left: calc(50% + 45px); }
+        .flower.f6 { top: 88px; left: calc(50% - 39px); }
+        .flower.f7 { top: 119px; left: calc(50% - 81px); }
+        .flower.f8 { top: 119px; left: calc(50% + 3px); }
+
+        .petal {
+            background: linear-gradient(145deg, #fff0f3 0%, #ffb6ca 38%, #e66e93 100%);
+            box-shadow: inset -2px -3px 5px rgba(174, 54, 91, .14),
+                        0 4px 12px rgba(191,98,122,0.2);
+        }
+        .flower:nth-of-type(3n) .petal {
+            background: linear-gradient(145deg, #fff6e7 0%, #ffd0da 48%, #f28aa8 100%);
+        }
+        .flower-center {
+            background: radial-gradient(circle at 35% 30%, #fff8d4, #f3c96c 60%, #c88b39);
+            box-shadow: 0 0 9px rgba(224,173,93,.55);
+        }
+
+        .instruction-text {
+            border: 1px solid rgba(255,255,255,.85);
+            backdrop-filter: blur(8px);
+        }
+
+        @media (max-width: 480px) {
+            .bouquet-container {
+                transform: scale(.88);
+                transform-origin: center;
+                margin: -2px auto;
+            }
+            .bouquet-container:hover { transform: scale(.9) rotate(1deg); }
+            .landing-title { font-size: 2.05rem; }
+            .instruction-text { font-size: 1rem; padding: 11px 18px; }
+            .main-header h1 { font-size: 2.25rem; }
+            .common-letter-btn { right: 14px; bottom: 14px; padding: 12px 17px; }
+        }
+
+
+        /* Tinh chỉnh lần 2: cụm hoa ôm sát giấy gói, không còn cảm giác rời rạc */
+        .bouquet-container {
+            width: 340px;
+            height: 310px;
+            filter: drop-shadow(0 15px 17px rgba(145, 54, 84, .24));
+        }
+        .bouquet-paper-back {
+            top: 119px;
+            width: 250px;
+            height: 158px;
+            transform: translateX(-50%) rotate(-5deg);
+            background: linear-gradient(120deg, #e8b8c8 0%, #fff0ed 42%, #dba8bb 100%);
+        }
+        .bouquet-paper {
+            top: 128px;
+            width: 236px;
+            height: 157px;
+            background: linear-gradient(105deg, #f3d0c2 0%, #fff5e9 26%, #f5d9cb 53%, #fff1e7 76%, #e8bfb7 100%);
+        }
+        .bouquet-paper::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(190, 130, 133, .24);
+            transform: rotate(-2deg);
+        }
+        .bouquet-stems {
+            top: 124px;
+            height: 113px;
+            z-index: 2;
+        }
+        .bouquet-leaf.l1 { left: 103px; top: 168px; }
+        .bouquet-leaf.l2 { right: 100px; top: 176px; }
+        .bouquet-leaf.l3 { left: 122px; top: 198px; }
+        .bouquet-leaf.l4 { right: 119px; top: 201px; }
+        .bouquet-ribbon {
+            top: 211px;
+            width: 62px;
+            height: 23px;
+            background: linear-gradient(135deg, #cf4774, #f5a1ba 48%, #bd3c69);
+        }
+        /* Các tâm hoa được bố trí chồng lớp như một bó hoa tròn */
+        .flower { width: 78px; height: 78px; z-index: 4; }
+        .flower.f1 { top: 3px; left: calc(50% - 39px); }
+        .flower.f2 { top: 35px; left: calc(50% - 83px); }
+        .flower.f3 { top: 35px; left: calc(50% + 5px); }
+        .flower.f4 { top: 75px; left: calc(50% - 119px); }
+        .flower.f5 { top: 75px; left: calc(50% + 41px); }
+        .flower.f6 { top: 81px; left: calc(50% - 39px); }
+        .flower.f7 { top: 119px; left: calc(50% - 80px); }
+        .flower.f8 { top: 119px; left: calc(50% + 2px); }
+        .petals { filter: drop-shadow(0 2px 2px rgba(142, 51, 79, .12)); }
+        .flower-center { width: 15px; height: 15px; left: 31px; top: 31px; }
+        @media (max-width: 480px) {
+            .bouquet-container { transform: scale(.84); margin: -8px auto; }
+            .bouquet-container:hover { transform: scale(.88) rotate(2deg); }
+        }
+        /* Cụm hoa không giấy gói, không cuống: bố cục đối xứng hình kim cương */
+        .bouquet-paper-back,
+        .bouquet-paper,
+        .bouquet-ribbon,
+        .bouquet-stems,
+        .bouquet-leaf {
+            display: none !important;
+        }
+
+        .bouquet-container {
+            width: 350px;
+            height: 300px;
+            flex: 0 0 300px;
+            filter: drop-shadow(0 12px 16px rgba(145, 54, 84, .12));
+        }
+
+        .flower {
+            position: absolute;
+            width: 78px;
+            height: 78px;
+            overflow: visible;
+            z-index: 2;
+        }
+
+        .flower::after {
+            display: none !important;
+            content: none !important;
+        }
+
+        .flower .petals {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+
+        .flower .flower-center {
+            position: absolute;
+            z-index: 4;
+            left: 31px;
+            top: 31px;
+            width: 15px;
+            height: 15px;
+        }
+
+        /* Hàng hoa xếp đối xứng, thu dần về phía trên và dưới */
+        .flower.f1 { top: 0;   left: calc(50% - 39px); }
+        .flower.f2 { top: 35px; left: calc(50% - 83px); }
+        .flower.f3 { top: 35px; left: calc(50% + 5px); }
+        .flower.f4 { top: 75px; left: calc(50% - 119px); }
+        .flower.f5 { top: 75px; left: calc(50% + 41px); }
+        .flower.f6 { top: 81px; left: calc(50% - 39px); }
+        .flower.f7 { top: 119px; left: calc(50% - 80px); }
+        .flower.f8 { top: 119px; left: calc(50% + 2px); }
+        .flower.f9 { top: 158px; left: calc(50% - 39px); }
+
+        @media (max-width: 480px) {
+            .bouquet-container {
+                transform: scale(.84);
+                margin: -8px auto;
+            }
+            .bouquet-container:hover {
+                transform: scale(.88) rotate(2deg);
+            }
+        }
+
+
+    </style>
+</head>
+<audio id="nhacNen" src="nhac.mp3" loop preload="auto"></audio>
+<body>
+
+    <!-- Canvas cho hiệu ứng cánh hoa bay -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Nút bật/tắt nhạc -->
+
+    <div class="app-container">
+        
+        <!-- 1. LANDING PAGE -->
+        <div id="landing-page" onclick="openMainPage()">
+            <div class="landing-title" id="typing-text"></div>
+            
+            <!-- THAY THẾ DUY NHẤT BÓ HOA BẰNG CỤM 8 BÔNG HOA TỪ CODE SINH NHẬT CỦA BẠN -->
+            <div class="bouquet-container">
+                <div class="bouquet-glow"></div>
+                <div class="bouquet-paper-back"></div>
+                <div class="bouquet-stems"></div>
+                <div class="bouquet-leaf l1"></div>
+                <div class="bouquet-leaf l2"></div>
+                <div class="bouquet-leaf l3"></div>
+                <div class="bouquet-leaf l4"></div>
+                <div class="bouquet-paper"></div>
+                <div class="bouquet-ribbon"></div>
+                <div class="flower f1"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+                <div class="flower f2"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+                <div class="flower f3"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+                <div class="flower f4"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+                <div class="flower f5"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+                <div class="flower f6"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+                <div class="flower f7"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+                <div class="flower f8"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+                <div class="flower f9"><div class="petals"><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div><div class="petal"></div></div><div class="flower-center"></div></div>
+            </div>
+
+            <div class="instruction-text">
+                Chạm vào bó hoa để nhận quà nè! 💐
+            </div>
+        </div>
+
+        <!-- 2. MAIN PAGE -->
+        <div id="main-page">
+            <div class="main-header">
+                <h1>Gửi Những Người Phụ Nữ Tươi Đẹp</h1>
+                <p>Mỗi món quà là một lời chúc đong đầy yêu thương. Hãy chọn một ô quà nhé! ✨</p>
+            </div>
+
+            <div class="grid-container" id="gridContainer">
+                <!-- 18 thẻ sẽ được JavaScript tự động sinh ra -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Nút mở Thư chung -->
+    <button class="common-letter-btn" id="commonLetterBtn" onclick="openCommonLetter()" style="display: none;">
+        <span>Xem thư chung</span> 💌
+    </button>
+
+    <!-- 3. MODAL POPUP (LỜI CHÚC) -->
+    <div class="modal-overlay" id="wishModal">
+        <div class="modal-card">
+            <div class="modal-avatar" id="modalAvatar">🌸</div>
+            <h2 class="modal-title" id="modalTitle">Lời Chúc</h2>
+            <div class="modal-body" id="modalBody">
+                <!-- Nội dung lời chúc -->
+            </div>
+            <button class="modal-close-btn" onclick="closeModal()">Đóng lại ✨</button>
+        </div>
+    </div>
+
+    <script>
+        /* === 1. DANH SÁCH 18 LỜI CHÚC CÁ NHÂN HÓA === */
+        const wishes = [
+            "Cảm ơn bạn vì đã trở thành một phần quan trong đối với A7, trở thành thủ quỹ đáng tin cậy của lớp trong suốt thời gian qua💖💖.Chúc bạn luôn vui vẻ, tràn đầy hành phúc, chúc bạn sau ngày hôm nay sẽ có duyên với Lí, sống tốt với Toán và hòa hợp với Hóa. Cuối cùng A7 boys xin gửi tới bạn những lời chúc tốt đẹp nhất trong ngày phụ nữ Việt Nam đầy ý nghĩa!!",
+            "Đối với tập thể A7 bạn là một phần không thể thiếu 💖💖💖, cảm ơn bạn vì những buổi bồi dưỡng hóa online đầy ý nghĩa khi A7 gặp khó 🧪🧪, tập thể A7 boys xin kính chúc đốc tờ hóa học của lớp một ngày phụ nữ Việt Nam đầy niềm vui, chúc cho những lựa chọn của bạn sẽ đi đến những bến bờ êm xuôi, chúc Q.Anh luôn tươi cười và tràn đầy sự hạnh phúc để đồng hành cùng A7 viết tiếp phần còn lại của cuộc hành trình.🫶🫶",
+            " Chúc Kngoc 20/10 bình an, vui vẻ, khoẻ mạnh . Mong Kngoc có một cuộc sống thiệt là hạnh phúc, không cần phải quan tâm mấy thứ không cần thiết nữa🥰🥰🥰 .Sớm có đai đen nha taekwondo kid. Cảm ơn vì đã đủ mạnh mẽ để vượt qua mọi thử thách mà không từ bỏ",
+            "Chúc cho cô gái xinh đẹp này có một ngày 20/10 thật nhiều hoa, nhiều quà và tràn ngập tình yêu thương. Cảm ơn sự dịu dàng và ấm áp của bạn, thân hạnh được nói rằng bạn là phần không thể thiếu của tụi mình, cảm ơn đã vì nhau mà đồng hànhhh💖💖",
+            "Nhân ngày 20/10, chúc người Bí thư bản lĩnh và tâm huyết của lớp mình luôn giữ vững ngọn lửa đam mê, khát vọng rực rỡ. Cảm ơn bạn đã luôn dẫn dắt tập thể bằng trách nhiệm và sự tận tụy. Mong bạn không chỉ gặt hái thành tựu rực rỡ bên ngoài, mà sâu thẳm bên trong, tâm hồn luôn tràn ngập sự bình an và hạnh phúc tự thân😚💖.",
+            "sự hiện diện của bạn trong tập thể A7 hoàn hảo tựa như cú ném 3 điểm của Stephen Curry . 20/10 , chúc baller pro vip của lớp luôn tự tin tỏa sáng , chúc bạn luôn xinh đẹp như bông hoa tỏa ngát hương thơm . Chúc bạn luôn gặt hái được nhiều thành công trên hành trình của mình , chúc bạn luôn tỏa sáng mỗi phút giây trên sân bóng và chúc những con điểm của bạn sẽ luôn cao vút trời . Sự dịu dàng có chút tinh nghịch nhí nhảnh của bạn như một điểm nổi bật làm sáng lên bức tranh đẹp nhất bởi các nàng A7 . 20/10 vui vẻ nhé sô cô la va ni😚💖",
+            "Nhân nhịp 20/10, chúc cho bạn luôn giữ được sự nhiệt huyết tuổi trẻ, sự mạnh khỏe của bản thân, sự ân cần từ lòng trắc ẩn, sự minh mẫn trong tư duy, sự uy nghi của người lãnh đạo và sự sắc sảo của kẻ dám nghĩ dám làm. Chúc cho bạn lun nhận được mọi điều tốt đẹp trong cuộc sống!",
+            "A7 mà k có Sipu thì cũng như đi học mà để hồn ở nhà vậy , đấy gọi là KHÔNG CẢM XÚC . Đúng vậy , chúng mình vô cùng biết ơn sự hiện diện của bạn trong tập thể A7 . 20/10 này chúc cô nàng cao nhất lớp  sẽ luôn xinh đẹp tựa như bông hoa Ánh Dương :)) , chúc bạn luôn học giỏi và gặt hái đước nhiều thành công trên hành trình của bạn và chúc những con điểm cao sẽ được bạn lụm về ngày càng nhiều . Thật thú vị khi A7 có một Pet lover như bạn , bạn lan tỏa sự dịu dàng đến với mỗi người trong tập thể A7 . Sự  hiền dịu cũng như dễ chiều của bạn như một phần không thể thiếu để răn đe những thằng nghịch tử A7 boys . 20/10 vui vẻ nhé bạn iuuu",
+            "thầy Trần Thanh Bình thật sự thiên tài khi xếp bạn vào tập thể A7 . 20/10 , chúc cô chủ nhỏ luôn rạng rỡ nụ cười trên môi , chúc bạn luôn gặt hái được nhiều thành công ngọt như từng ly cà phê của bạn . Chúc bạn luôn xinh đẹp như những đóa hoa , chúc bạn luôn tỏa sáng trên hành trình của mình và chúc những con điểm của bạn sẽ ngày một thăng hoa. Sự dịu dàng đáng iu của bạn như một mảnh ghép không thể thiếu để tạo nên bức tranh đẹp nhất cùng các tiên nữ A7 . 20/10 bạn cứ việc vui đi nhé , mọi lo toan bộn bề cứ để bọn mình lo❤❤❤",
+            "Chúc bạn 20/10, thêm phần mạnh mẽ, mặn mà, xinh tươi. Thêm thắt cho tuổi đôi mươi, thật nhiều chiến tích luôn là No 1. Thỏa được ước muốn còn dang, vươn ra biển lớn vượt ngàn chông gai. Đạt được thành tích thật oai, người người ngưỡng mộ bảng vàng vinh danh. Wish you the best of luck on your future journey, though it may be challenging but remember to stay consistent and never give up.",
+            "Cảm ơn mi vì đã trở thành một mần không thể thiếu của A7, đã ở bên cạnh cả lớp suốt thời gian vừa rồi nghe 💖💖. Chúc mi ngày mô cũng vui như Tết, hạnh phúc đầy nhà, xinh tươi phơi phới, cười tươi rói cả ngày nạ. Mong là từ ni trở đi, mi với môn Lí có duyên có nợ, sống cho hòa thuận với Toán, kết thân được với Hóa, chơ đừng để mấy môn nớ hành cho lên bờ xuống ruộng nghe chưa 😭😂.Chúc mi có một ngày 20/10 vui hết nấc, hạnh phúc hết phần thiên hạ luôn nàaa 💐💗. Mi cứ việc rạng rỡ, còn lời chúc cứ để bọn tau lo ngheee! 😚💖",
+            "Dù chỉ đồng hành với nhau 1 năm ngắn ngủi nhưng mà thật sự bạn vẫn là 1 phần của A7, cảm ơn đã đồng hành với nhau chúc bạn 20/10 vui vẻ luôn học giỏi, hạnh phúc và ngập tràn may mắn nha🥰🥰🥰",
+            "Hôm nay 20/10 chúc bạn có 1 ngày thật ý nghĩa, bạn là 1 phần của A7 dù có ít nói trầm lặng nhưng vẫn mang lại nhiều kỉ niệm cho lớp minhfh, mong bạn luôn hạnh phúc xinh đẹp và giữ mãi nụ cười trên môi nhé💖💖",
+            "Cảm ơn bạn vì đã là một phần của tập thể A7, nhân ngày Phụ Nữ Việt Nam đầy ý nghĩa, A7 Boys kính chúc Phương Sách sẽ có những con điểm đẹp như những pha highlight phi phai📈📈, chúc bạn sẽ luôn giữ được sự hạnh phúc, mong rằng bạn sẽ luôn có những lựa chọn màu hồng để có thể tạo ra những giá trị ngọt như kẹo cùng A7💖💖",
+            "Đến bây giờ mình mới thấy đc mắt nhìn người của cô Kim Thanh khi chọn bạn làm lớp trưởng Nhân dịp 20/10 , chúc chị trưởng ngày càng học giỏi , gặt hái thành công , chúc Bon ngày càng đẹp gái tựa như vẻ đẹp của văn học miêu tả phụ nữ , chúc Tờ rúc mỗi lần đi thi là ẵm giải về ngày càng nhiều và nhiều hơn nữa . Mỗi nét mực viết văn của bạn như mang theo sức sống của toàn thể A7 . Sự lãnh đạo của bạn là một phần không thể thiếu để có tập thể A7 prime ngày hôm nay . Chúc bạn Bon mạnh khoẻ để có sức trị anh em A7 boys và em trai Thanh Liêm nhé😚💖😚💖",
+            "Chúc Tzy có một ngày thật tuyệt vời, hạnh phúc .Mong Tzy đừng có tự ti nhan sắc nx nha, bà xinh lắm á🥰🥰🥰 .Chúc bà nuôi được một đàn mèo thiệt là béo nha .Quen thằng nào đàng hoàng tí nha trời .Cảm ơn vì đã ở đây và trở thành một phần của thanh xuân",
+            "Cảm ơn bạn vì đã trở thành 1 thành viên của A7, sự dịu dàng và âm thầm của bạn là chất trung hòa hoàn hảo dành cho sự nổi loạn của A7 Boys, Chúc Ngữ Yên sẽ tìm ra ngày càng nhiều nguồn cảm hứng để vẽ nên những bức tranh ý nghĩa🖍🖍, chúc bạn một ngày Phụ Nữ Việt Nam đầy niềm vui và sức khỏe để có thể cùng A7 Trùm Chợ Rẫy vẽ thêm những câu chuyện thú vị hơn cả cổ tích nữa nhé !💖💖",
+            "Chúc Tlinh 20/10 khoẻ mạnh, hạnh phúc và vui vẻ . Mong cậu đậu được trường công an mơ ước với đạt aim ielts nha🥰🥰🥰 . chúc cậu gặt hái được nhiều thành công , chúc những con điểm của bạn sẽ luôn đc như ý muốn. Một ngày nào đó Cortis về Việt Nam , chúc bạn đu idol thành công nhé😎😎😎 .We wish you to always be successful on your future. No matter what’s gonna happen, stay strong, stay calm and give it your best! ❤❤❤"
+        ];
+
+        const icons = ['🌸', '🌺', '🌷', '🌹', '🌻', '🌼', '💐', '🎀', '💖', '🎁', '✨', '👑', '🕊️', '🍰', '🌿', '🎈', '⭐', '🍀'];
+
+        /* === 2. BÀI THƯ CHUNG === */
+        const commonLetter = {
+            title: "Thư Chung Gửi Tập Thể Các Bạn Nữ 💌",
+            avatar: "💌",
+            content: `Thân gửi tất cả các bạn nữ vô cùng tuyệt vời của chúng ta,<br><br>
+            Nhân ngày Phụ nữ Việt Nam 20/10, xin gửi tới toàn thể các bạn lời chúc mừng chân thành và đong đầy yêu thương nhất!<br><br>
+            Cảm ơn các bạn vì đã luôn mang đến sự dịu dàng, nụ cười ấm áp cùng năng lượng tích cực tuyệt vời cho tập thể. Sự hiện diện của các bạn chính là bông hoa xinh đẹp và rạng rỡ nhất giúp cuộc sống này trở nên trọn vẹn và tràn ngập màu sắc.<br><br>
+            Chúc cho tất cả các bạn luôn xinh đẹp, tự tin, hạnh phúc và gặt hái được thật nhiều thành công trong cuộc sống. Dù ở bất kỳ hoàn cảnh nào, hãy luôn yêu thương chính mình và tỏa sáng theo cách riêng biệt nhất nhé!<br><br>
+            <strong>Happy Vietnamese Women's Day 20/10! 💐✨</strong>`
+        };
+
+        /* === 3. TẠO HIỆU ỨNG ĐÁNH MÁY CHO TIÊU ĐỀ === */
+        const typingText = "CHÚC MỪNG NGÀY PHỤ NỮ VIỆT NAM 20/10";
+        let typingIndex = 0;
+        function typeWriter() {
+            if (typingIndex < typingText.length) {
+                document.getElementById("typing-text").innerHTML += typingText.charAt(typingIndex);
+                typingIndex++;
+                setTimeout(typeWriter, 70);
+            }
+        }
+        window.addEventListener('load', typeWriter);
+
+        /* === 4. DANH SÁCH TÊN 18 BẠN NỮ === */
+        // Thay các tên mẫu bằng tên thật, theo đúng thứ tự lời chúc trong mảng wishes.
+        const tenBanNu = [
+            "Thục Hân",
+            "Quỳnh Anh",
+            "Khánh Ngọc",
+            "Mỹ Dung",
+            "Mỹ Hằng",
+            "Quỳnh Lam",
+            "Gia Linh",
+            "Khánh My",
+            "Doanh Doanh",
+            "Hồng Nguyên",
+            "Yến Nhi",
+            "Ái Như",
+            "Đan Sa",
+            "Phương Sách",
+            "Thanh Trúc",
+            "Thảo Vy",
+            "Ngữ Yên",
+            "Thùy Linh"
+        ];
+
+        /* === 5. TẠO GRID 18 THẺ QUÀ === */
+        const gridContainer = document.getElementById('gridContainer');
+        for (let i = 0; i < tenBanNu.length; i++) {
+            const card = document.createElement('div');
+            card.className = 'gift-card';
+            card.onclick = () => openWishModal(i);
+
+            card.innerHTML = `
+                <div class="card-number">${i + 1}</div>
+                <div class="card-icon">${icons[i % icons.length]}</div>
+                <div class="card-label">${tenBanNu[i]}</div>
+            `;
+            gridContainer.appendChild(card);
+        }
+
+        /* === 6. CHUYỂN TRANG MỞ BÓ HOA === */
+        function openMainPage() {
+            const landing = document.getElementById('landing-page');
+            const main = document.getElementById('main-page');
+            const commonBtn = document.getElementById('commonLetterBtn');
+
+            landing.style.opacity = '0';
+            landing.style.transform = 'scale(0.9)';
+
+            playMelody(); // Phát giai điệu khi tương tác
+
+            setTimeout(() => {
+                landing.style.display = 'none';
+                main.style.display = 'flex';
+                commonBtn.style.display = 'flex';
+                setTimeout(() => {
+                    main.style.opacity = '1';
+                }, 50);
+            }, 700);
+        }
+
+        /* === 6. HIỂN THỊ MODAL & NỘI DUNG === */
+        const modal = document.getElementById('wishModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalBody = document.getElementById('modalBody');
+        const modalAvatar = document.getElementById('modalAvatar');
+
+        function openWishModal(index) {
+            modalTitle.innerText = `Gửi ${tenBanNu[index]} 💐`;
+            modalBody.innerText = wishes[index];
+            modalAvatar.innerText = icons[index % icons.length];
+            modal.classList.add('active');
+            playMelody();
+            startLetterMusic();
+        }
+
+        function openCommonLetter() {
+            modalTitle.innerText = commonLetter.title;
+            modalBody.innerHTML = commonLetter.content;
+            modalAvatar.innerText = commonLetter.avatar;
+            modal.classList.add('active');
+            playMelody();
+            startLetterMusic();
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            stopLetterMusic();
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        /* === 7. ÂM NHẠC NHỆ NHÀNG (WEB AUDIO API) === */
+        let audioCtx = null;
+        let isMuted = false;
+
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+        }
+
+        function playMelody() {
+            if (isMuted) return;
+            initAudio();
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99];
+            const now = audioCtx.currentTime;
+
+            notes.forEach((freq, index) => {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now + index * 0.12);
+
+                gain.gain.setValueAtTime(0, now + index * 0.12);
+                gain.gain.linearRampToValueAtTime(0.08, now + index * 0.12 + 0.05);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + index * 0.12 + 0.8);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start(now + index * 0.12);
+                osc.stop(now + index * 0.12 + 0.85);
+            });
+        }
+
+        /* Nhạc nền nhẹ nhàng phát trong lúc mở thư */
+        let letterMusicTimer = null;
+        let letterMusicIndex = 0;
+        const letterMusicNotes = [
+            523.25, 659.25, 783.99, 659.25,
+            587.33, 659.25, 698.46, 587.33,
+            523.25, 392.00, 440.00, 523.25,
+            493.88, 440.00, 392.00, 440.00
+        ];
+
+        function playLetterNote(freq) {
+            if (isMuted) return;
+            initAudio();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+
+            gain.gain.setValueAtTime(0.0001, now);
+            gain.gain.linearRampToValueAtTime(0.035, now + 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.62);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(now);
+            osc.stop(now + 0.65);
+        }
+          function startLetterMusic() {
+    if (isMuted) return;
+
+    const nhac = document.getElementById("nhacNen");
+    nhac.currentTime = 0;
+    nhac.play().catch(err => {
+        console.log("Trình duyệt chưa cho phép phát nhạc:", err);
+    });
+}
+
+      
+           function stopLetterMusic() {
+    const nhac = document.getElementById("nhacNen");
+    nhac.pause();
+    nhac.currentTime = 0;
+}
+
+        /* === 8. CANVAS HIỆU ỨNG CÁNH HOA / TRÁI TIM RƠI === */
+        const canvas = document.getElementById('particleCanvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const particleTypes = ['petal', 'heart'];
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 12 + 8;
+                this.speedY = Math.random() * 1.5 + 0.8;
+                this.speedX = Math.random() * 1 - 0.5;
+                this.type = particleTypes[Math.floor(Math.random() * particleTypes.length)];
+                this.opacity = Math.random() * 0.6 + 0.3;
+                this.rotation = Math.random() * 360;
+                this.spin = Math.random() * 2 - 1;
+                this.color = `hsl(${Math.random() * 20 + 340}, 100%, ${Math.random() * 20 + 75}%)`;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += Math.sin(this.y / 30) + this.speedX;
+                this.rotation += this.spin;
+
+                if (this.y > canvas.height + 20) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+
+                if (this.type === 'petal') {
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.quadraticCurveTo(this.size / 2, -this.size / 2, 0, -this.size);
+                    ctx.quadraticCurveTo(-this.size / 2, -this.size / 2, 0, 0);
+                    ctx.fill();
+                } else {
+                    ctx.beginPath();
+                    const topCurveHeight = this.size * 0.3;
+                    ctx.moveTo(0, topCurveHeight);
+                    ctx.bezierCurveTo(0, 0, -this.size / 2, 0, -this.size / 2, topCurveHeight);
+                    ctx.bezierCurveTo(-this.size / 2, (this.size + topCurveHeight) / 2, 0, this.size, 0, this.size);
+                    ctx.bezierCurveTo(0, this.size, this.size / 2, (this.size + topCurveHeight) / 2, this.size / 2, topCurveHeight);
+                    ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
+                    ctx.fill();
+                }
+
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < 35; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p) => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
